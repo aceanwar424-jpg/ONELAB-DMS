@@ -5,7 +5,7 @@ Sistem manajemen dokumen SOP berbasis web dengan fitur approval workflow, PDF ge
 ## Stack
 
 | Komponen | Teknologi | Hosting |
-|----------|-----------|---------|
+|----------|-----------|--------|
 | Frontend | React + Vite + Tailwind | GitHub Pages (Free) |
 | Backend | Node.js + Express | Railway (Free) |
 | Database | PostgreSQL | Railway (Free) |
