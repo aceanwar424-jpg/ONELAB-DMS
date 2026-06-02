@@ -6,7 +6,7 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/sop-wiki">
+    <BrowserRouter basename="/onelab-dms-production-921d.up.railway.app">
       <App />
     </BrowserRouter>
   </React.StrictMode>
