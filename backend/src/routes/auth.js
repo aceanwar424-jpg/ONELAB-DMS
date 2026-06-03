@@ -8,7 +8,11 @@ module.exports = function(passport) {
 
   router.get('/google/callback',
     passport.authenticate('google', { failureRedirect: `${process.env.FRONTEND_URL}/login?error=auth_failed` }),
-    (req, res) => res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:5173'}/dashboard`)
+    (req, res) => {
+      // Redirect tanpa trailing slash, tanpa double slash
+      const frontendUrl = (process.env.FRONTEND_URL || 'http://localhost:5173').replace(/\/$/, '')
+      res.redirect(`${frontendUrl}/dashboard`)
+    }
   );
 
   router.get('/me', isAuthenticated, (req, res) => {

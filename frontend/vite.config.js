@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/ONELAB-DMS/', // Change to your GitHub repo name
+  base: '/ONELAB-DMS/',
   server: {
     proxy: {
       '/api': {

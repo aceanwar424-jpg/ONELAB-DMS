@@ -3,17 +3,21 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { FileText } from 'lucide-react'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'
+
 export default function LoginPage() {
   const { user } = useAuth()
   const navigate = useNavigate()
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'
 
   useEffect(() => { if (user) navigate('/dashboard') }, [user])
+
+  const handleLogin = () => {
+    window.location.href = `${API_URL}/auth/google`
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
-        {/* Logo */}
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
             <FileText size={28} className="text-white" />
@@ -22,12 +26,12 @@ export default function LoginPage() {
           <p className="text-slate-400 text-sm mt-1">Sistem Manajemen Dokumen SOP</p>
         </div>
 
-        {/* Card */}
         <div className="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6">
           <p className="text-slate-300 text-sm text-center mb-6">
             Masuk dengan akun Google kamu untuk mengakses dokumen SOP
           </p>
-          <a href={`${API_URL}/auth/google`}
+          <button
+            onClick={handleLogin}
             className="flex items-center justify-center gap-3 w-full py-3 px-4 bg-white text-slate-800 rounded-xl font-medium text-sm hover:bg-slate-100 transition-colors shadow-sm"
           >
             <svg width="18" height="18" viewBox="0 0 18 18">
@@ -37,7 +41,7 @@ export default function LoginPage() {
               <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z"/>
             </svg>
             Masuk dengan Google
-          </a>
+          </button>
         </div>
 
         <p className="text-center text-slate-500 text-xs mt-6">
