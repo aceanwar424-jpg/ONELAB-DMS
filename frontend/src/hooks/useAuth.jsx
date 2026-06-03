@@ -17,7 +17,6 @@ export function AuthProvider({ children }) {
   const logout = async () => {
     await api.post('/auth/logout')
     setUser(null)
-    window.location.href = '/sop-wiki/login'
   }
 
   return (
