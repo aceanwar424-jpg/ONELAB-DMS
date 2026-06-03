@@ -2,7 +2,7 @@ import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { FileText, LayoutDashboard, Users, Upload, LogOut, ChevronRight } from 'lucide-react'
 
-export default function Layout() {
+export default function Layout({ user }) {
   const { user, logout } = useAuth()
 
   const nav = [
