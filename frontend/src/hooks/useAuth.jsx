@@ -1,26 +1,17 @@
-import { createContext, useContext, useState, useEffect } from 'react'
-import api from '../lib/api'
+import { createContext, useContext } from 'react'
 
-const AuthContext = createContext(null)
+const mockUser = { id: 1, name: 'Admin', email: 'admin@onelab.com', role: 'admin', avatar: null }
+
+const AuthContext = createContext({
+  user: mockUser,
+  loading: false,
+  logout: () => {},
+  setUser: () => {}
+})
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    api.get('/auth/me')
-      .then(r => setUser(r.data))
-      .catch(() => setUser(null))
-      .finally(() => setLoading(false))
-  }, [])
-
-  const logout = async () => {
-    await api.post('/auth/logout')
-    setUser(null)
-  }
-
   return (
-    <AuthContext.Provider value={{ user, loading, logout, setUser }}>
+    <AuthContext.Provider value={{ user: mockUser, loading: false, logout: () => {}, setUser: () => {} }}>
       {children}
     </AuthContext.Provider>
   )
